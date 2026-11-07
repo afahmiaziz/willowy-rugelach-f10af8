@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawiwahan Ageng - A. Fahmi Aziz & Rofiatul Hasanah</title>
+
+  <!-- Open Graph Meta Tags (Untuk Share WhatsApp, Telegram, Medsos) -->
+  <meta property="og:title" content="Undangan Pawiwahan Ageng: A. Fahmi Aziz & Rofiatul Hasanah">
+  <meta property="og:description" content="Serat Ulem Pawiwahan Ageng A. Fahmi Aziz & Rofiatul Hasanah. Kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa restu.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80">
+  <meta name="theme-color" content="#0a0807">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Background Golden Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Background Music Audio Element (Tradisional Gamelan / Suling Ambiance) -->
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="assets/gamelan-romantic.wav" type="audio/wav">
+  </audio>
+
+  <!-- ==========================================================================
+       FLOATING ACTION BUTTONS
+       ========================================================================== -->
+  <!-- Audio Toggle Controller -->
+  <button id="audio-toggle-btn" class="audio-controller-btn" title="Nyalakan/Matikan Musik">
+    <i class="fas fa-compact-disc"></i>
+  </button>
+
+  <!-- Edit Tamu & Share Floating Button -->
+  <button class="floating-share-btn" onclick="openRecipientModal()" title="Edit Nama Penerima & Bagikan">
+    <i class="fas fa-user-edit"></i>
+    <span>Edit Nama Tamu</span>
+  </button>
+
+  <!-- ==========================================================================
+       COVER / ENVELOPE OVERLAY (LOCKED GATE)
+       ========================================================================== -->
+  <div id="invitation-cover">
+    <div class="cover-container">
+      <!-- Gunungan Wayang SVG Ornament -->
+      <img src="assets/gunungan.svg" alt="Gunungan Wayang" class="cover-gunungan">
+      
+      <p class="cover-subtitle">Serat Ulem Pawiwahan Ageng</p>
+      <h1 class="cover-title">WALIMATUL ‘URSY</h1>
+      
+      <div class="cover-names">
+        A. Fahmi Aziz <span>&</span> Rofiatul Hasanah
+      </div>
+
+      <!-- Kartu Penerima Undangan (Dynamic Guest Name) -->
+      <div class="cover-recipient-card">
+        <p class="recipient-label">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <h3 class="recipient-name guest-name-target">Tamu Undangan</h3>
+        <p class="recipient-location guest-loc-target">di Tempat</p>
+
+        <button class="edit-guest-pill" onclick="openRecipientModal()">
+          <i class="fas fa-pencil-alt"></i> Ganti Nama / Buat Link
+        </button>
+      </div>
+
+      <!-- Tombol Buka Undangan -->
+      <button class="btn-royal btn-open-envelope" onclick="openInvitation()">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Buka Undangan</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN INVITATION CONTENT
+       ========================================================================== -->
+  <div class="main-wrapper">
+
+    <!-- HERO / GREETING SECTION -->
+    <section id="greeting-section" class="hero-section">
+      <img src="assets/gunungan.svg" alt="Gunungan Wayang" class="hero-gunungan">
+      
+      <p class="section-tagline">Pawiwahan Ageng Keraton</p>
+      
+      <h2 class="hero-couple-names">
+        A. Fahmi Aziz <span class="ampersand">&</span> Rofiatul Hasanah
+      </h2>
+
+      <img src="assets/divider.svg" alt="Ornament Divider" class="divider-ornament">
+
+      <p class="section-desc" style="margin-bottom: 1.5rem;">
+        <em>"Nyuwun lumunturing sih wilasa dalem Gusti Kang Maha Wicaksana, mugi tansah pinaringan berkah lan karaharjan."</em>
+      </p>
+
+      <div class="wedding-date-badge">
+        <i class="far fa-calendar-alt"></i> SABTU, 14 NOVEMBER 2026
+      </div>
+    </section>
+
+    <!-- AYAT SUCI & FILOSOFI JAWA -->
+    <section id="quote-section">
+      <div class="ornate-card quote-card">
+        <img src="assets/corner-ornament.svg" class="corner-top-left" alt="Corner">
+        <img src="assets/corner-ornament.svg" class="corner-top-right" alt="Corner">
+        <img src="assets/corner-ornament.svg" class="corner-bottom-left" alt="Corner">
+        <img src="assets/corner-ornament.svg" class="corner-bottom-right" alt="Corner">
+
+        <p class="arabic-text">
+          وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+        </p>
+
+        <p class="quote-translation">
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
+        </p>
+
+        <p class="quote-reference">QS. AR-RUM : 21</p>
+
+        <div class="javanese-philosophy">
+          <p class="javanese-hanacaraka">"Tresna iku tuwuh saka rasa, nyawiji sajroning tresna sejati."</p>
+          <p class="javanese-meaning">Cinta sejati adalah perpaduan jiwa, saling mengasihi, memuliakan, dan berjalan beriringan dalam naungan ridha Sang Pencipta hingga akhir hayat.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMPELAI (BRIDE & GROOM PROFILE) -->
+    <section id="mempelai-section">
+      <p class="section-tagline">Sang Hangesti Palakrama</p>
+      <h2 class="section-title">Kedua Mempelai</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami bermaksud menyelenggarakan syukuran pernikahan putra-putri kami tercinta:
+      </p>
+
+      <div class="mempelai-grid">
+        <!-- Mempelai Pria (Groom) -->
+        <div class="mempelai-card">
+          <div class="photo-frame-outer">
+            <div class="photo-frame-filigree"></div>
+            <div class="photo-frame">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="A. Fahmi Aziz">
+            </div>
+          </div>
+
+          <h3 class="mempelai-name">A. Fahmi Aziz, S.Kom.</h3>
+          <p class="mempelai-title">— Pengantin Pria —</p>
+          <p class="mempelai-family">
+            Putra Pertama dari Pasangan<br>
+            <strong>Bapak H. Abdul Aziz</strong><br>
+            &amp; <strong>Ibu Hj. Aminah</strong><br>
+            <span style="font-size: 0.82rem; color: var(--gold-light);">Yogyakarta Hadiningrat</span>
+          </p>
+
+          <a href="https://instagram.com" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i> @fahmi.aziz
+          </a>
+        </div>
+
+        <!-- Center Ampersand -->
+        <div class="mempelai-divider-center">
+          <div class="center-ampersand">&</div>
+          <span style="font-family: var(--font-royal); font-size: 0.8rem; letter-spacing: 0.2em; color: var(--gold-light);">DENGAN</span>
+        </div>
+
+        <!-- Mempelai Wanita (Bride) -->
+        <div class="mempelai-card">
+          <div class="photo-frame-outer">
+            <div class="photo-frame-filigree"></div>
+            <div class="photo-frame">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Rofiatul Hasanah">
+            </div>
+          </div>
+
+          <h3 class="mempelai-name">Rofiatul Hasanah, S.Pd.</h3>
+          <p class="mempelai-title">— Pengantin Wanita —</p>
+          <p class="mempelai-family">
+            Putri Kedua dari Pasangan<br>
+            <strong>Bapak H. Moh. Hasan</strong><br>
+            &amp; <strong>Ibu Hj. Nur Laila</strong><br>
+            <span style="font-size: 0.82rem; color: var(--gold-light);">Surakarta Hadiningrat</span>
+          </p>
+
+          <a href="https://instagram.com" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i> @rofi.hasanah
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN TIMER SECTION -->
+    <div class="countdown-container">
+      <p class="section-tagline" style="margin-bottom: 1rem;">Menghitung Hari Bahagia</p>
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <div id="days" class="countdown-num">00</div>
+          <div class="countdown-label">Hari</div>
+        </div>
+        <div class="countdown-box">
+          <div id="hours" class="countdown-num">00</div>
+          <div class="countdown-label">Jam</div>
+        </div>
+        <div class="countdown-box">
+          <div id="minutes" class="countdown-num">00</div>
+          <div class="countdown-label">Menit</div>
+        </div>
+        <div class="countdown-box">
+          <div id="seconds" class="countdown-num">00</div>
+          <div class="countdown-label">Detik</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+A.+Fahmi+Aziz+%26+Rofiatul+Hasanah&dates=20261114T010000Z/20261114T070000Z&details=Undangan+Pernikahan+Pawiwahan+Ageng+A.+Fahmi+Aziz+%26+Rofiatul+Hasanah&location=Sasana+Hinggil+Dwijoseputro,+Alun-Alun+Kidul,+Yogyakarta" target="_blank" class="btn-outline-royal">
+          <i class="far fa-calendar-plus"></i> Simpan ke Google Calendar
+        </a>
+      </div>
+    </div>
+
+    <!-- ACARA (EVENT SCHEDULE & VENUE) -->
+    <section id="acara-section">
+      <p class="section-tagline">Tititiwanci Pawiwahan</p>
+      <h2 class="section-title">Waktu &amp; Lokasi Acara</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Insya Allah rangkaian acara pernikahan kami akan diselenggarakan pada:
+      </p>
+
+      <div class="event-grid">
+        <!-- Akad Nikah -->
+        <div class="ornate-card event-card">
+          <img src="assets/corner-ornament.svg" class="corner-top-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-top-right" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-bottom-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-bottom-right" alt="Corner">
+
+          <div class="event-icon-badge">
+            <i class="fas fa-ring"></i>
+          </div>
+          <h3 class="event-title">Akad Nikah</h3>
+          <p class="event-date-text">Sabtu, 14 November 2026</p>
+          <div class="event-time-badge">
+            <i class="far fa-clock"></i> Pukul 08:00 - 10:00 WIB
+          </div>
+          <p class="event-location-title">Kraton Ballroom / Gedung Joglo Ageng</p>
+          <p class="event-location-desc">
+            Kawasan Sasana Hinggil Dwijoseputro<br>
+            Jl. Alun-Alun Kidul, Kraton, Kota Yogyakarta
+          </p>
+
+          <a href="https://maps.google.com/?q=Alun-alun+Kidul+Yogyakarta" target="_blank" class="btn-outline-royal">
+            <i class="fas fa-map-marker-alt"></i> Petunjuk Arah
+          </a>
+        </div>
+
+        <!-- Resepsi Pernikahan -->
+        <div class="ornate-card event-card">
+          <img src="assets/corner-ornament.svg" class="corner-top-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-top-right" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-bottom-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-bottom-right" alt="Corner">
+
+          <div class="event-icon-badge">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <h3 class="event-title">Resepsi Ageng</h3>
+          <p class="event-date-text">Sabtu, 14 November 2026</p>
+          <div class="event-time-badge">
+            <i class="far fa-clock"></i> Pukul 11:00 - 14:00 WIB &amp; Sesi Malam
+          </div>
+          <p class="event-location-title">Grand Sasana Hinggil Hall</p>
+          <p class="event-location-desc">
+            Kawasan Budaya Keraton Ngayogyakarta Hadiningrat<br>
+            Jl. Alun-Alun Kidul, D.I. Yogyakarta
+          </p>
+
+          <a href="https://maps.google.com/?q=Alun-alun+Kidul+Yogyakarta" target="_blank" class="btn-outline-royal">
+            <i class="fas fa-map-marker-alt"></i> Petunjuk Arah
+          </a>
+        </div>
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="venue-map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.880998971485!2d110.36214531477815!3d-7.813038694369931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5796a567639d%3A0xbcf3c07049cf1fa!2sSasana%20Hinggil%20Dwijoseputro!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- KISAH CINTA (OUR STORY TIMELINE) -->
+    <section id="cerita-section">
+      <p class="section-tagline">Lampahing Katresnan</p>
+      <h2 class="section-title">Kisah Cinta Kami</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Setiap babak cerita adalah untaian takdir yang mengarahkan kami menuju ikatan suci pernikahan.
+      </p>
+
+      <div class="timeline">
+        <!-- Item 1 -->
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2022</div>
+            <h4 class="timeline-heading">Pandangan Pertama</h4>
+            <p class="timeline-desc">
+              Pertemuan yang tak disengaja di sebuah kegiatan akademis di Yogyakarta menjadi awal mula sebuah percakapan hangat yang berkesan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2024</div>
+            <h4 class="timeline-heading">Menautkan Komitmen</h4>
+            <p class="timeline-desc">
+              Setelah saling mengenal karakter, visi, dan nilai-nilai hidup, kami bersepakat melangkah dalam ikatan komitmen yang serius menuju jenjang pernikahan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2025</div>
+            <h4 class="timeline-heading">Khitbah &amp; Lamaran</h4>
+            <p class="timeline-desc">
+              Dengan restu kedua orang tua dan sanak keluarga, ikrar lamaran resmi diucapkan sebagai bukti ketulusan cinta dan kesiapan lahir batin.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2026</div>
+            <h4 class="timeline-heading">Ikrar Pawiwahan Ageng</h4>
+            <p class="timeline-desc">
+              Hari yang dinantikan tiba, kami bersujud syukur menyatukan dua insan dalam ikatan suci pernikahan seumur hidup di hadapan Allah SWT.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI FOTO (PREWEDDING GALLERY) -->
+    <section id="galeri-section">
+      <p class="section-tagline">Memori &amp; Kebersamaan</p>
+      <h2 class="section-title">Galeri Kebahagiaan</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Potret kenangan manis kami dalam balutan busana warisan leluhur budaya Jawa yang anggun dan bersahaja.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=700&q=80" alt="Prewedding 1">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" alt="Prewedding 2">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80" alt="Prewedding 3">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=80" alt="Prewedding 4">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=700&q=80" alt="Prewedding 5">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1519225424976-599388c3a595?auto=format&fit=crop&w=1200&q=80')">
+          <img src="https://images.unsplash.com/photo-1519225424976-599388c3a595?auto=format&fit=crop&w=700&q=80" alt="Prewedding 6">
+          <div class="gallery-overlay">
+            <span><i class="fas fa-search-plus"></i> Lihat Foto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL / TANDA KASIH -->
+    <section id="kado-section">
+      <p class="section-tagline">Tanda Katresnan</p>
+      <h2 class="section-title">Amplop Digital</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Doa restu Anda merupakan karunia yang paling berharga bagi kami. Namun jika Anda bermaksud memberikan tanda kasih, kami menyediakan amplop digital berikut:
+      </p>
+
+      <div class="gift-container">
+        <div class="gift-cards-grid">
+          <!-- Rekening 1: BCA -->
+          <div class="bank-card">
+            <div class="bank-header">
+              <div class="bank-logo">BCA</div>
+              <div class="bank-chip"></div>
+            </div>
+            <div class="bank-acc-label">Nomor Rekening</div>
+            <div class="bank-acc-number">8720 1928 31</div>
+            <div class="bank-acc-name">a.n. A. Fahmi Aziz</div>
+            <button class="btn-copy" onclick="copyAccountNumber('8720192831', 'BCA a.n. A. Fahmi Aziz')">
+              <i class="far fa-copy"></i> Salin Rekening
+            </button>
+          </div>
+
+          <!-- Rekening 2: BSI / Mandiri -->
+          <div class="bank-card">
+            <div class="bank-header">
+              <div class="bank-logo">BSI</div>
+              <div class="bank-chip"></div>
+            </div>
+            <div class="bank-acc-label">Nomor Rekening</div>
+            <div class="bank-acc-number">7182 9384 91</div>
+            <div class="bank-acc-name">a.n. Rofiatul Hasanah</div>
+            <button class="btn-copy" onclick="copyAccountNumber('7182938491', 'BSI a.n. Rofiatul Hasanah')">
+              <i class="far fa-copy"></i> Salin Rekening
+            </button>
+          </div>
+        </div>
+
+        <!-- Kirim Kado Fisik Address -->
+        <div class="gift-address-card">
+          <i class="fas fa-gift" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 0.8rem; display: block;"></i>
+          <h4>Kirim Kado Fisik</h4>
+          <p>
+            Alamat Kediaman Mempelai:<br>
+            <strong>Jl. Alun-Alun Kidul No. 18, Patehan, Kraton, Kota Yogyakarta, D.I. Yogyakarta 55133</strong><br>
+            (Penerima: Fahmi Aziz &amp; Rofiatul Hasanah / 0812-3456-7890)
+          </p>
+          <button class="btn-outline-royal" style="margin-top: 1rem;" onclick="copyAddress('Jl. Alun-Alun Kidul No. 18, Patehan, Kraton, Kota Yogyakarta, D.I. Yogyakarta 55133 (Fahmi Aziz & Rofiatul)')">
+            <i class="far fa-copy"></i> Salin Alamat Pengiriman
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & BUKU TAMU (UCAPAN & DOA) -->
+    <section id="ucapan-section">
+      <p class="section-tagline">Buku Rawuh &amp; Donga Restu</p>
+      <h2 class="section-title">RSVP &amp; Ucapan Doa</h2>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament">
+      <p class="section-desc">
+        Kehadiran dan doa restu Bapak/Ibu/Saudara/i sekalian adalah kebahagiaan terindah bagi perjalanan hidup kami.
+      </p>
+
+      <div class="rsvp-grid">
+        <!-- RSVP Form -->
+        <div class="ornate-card rsvp-form-card">
+          <img src="assets/corner-ornament.svg" class="corner-top-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-top-right" alt="Corner">
+
+          <h3 style="font-family: var(--font-royal); color: #fff; font-size: 1.3rem; margin-bottom: 1.2rem;">
+            Konfirmasi Kehadiran
+          </h3>
+
+          <form id="rsvp-form">
+            <div class="form-group">
+              <label for="rsvp-name">Nama Lengkap</label>
+              <input type="text" id="rsvp-name" class="form-control" placeholder="Tuliskan nama Anda" required>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-status">Konfirmasi Kehadiran</label>
+              <select id="rsvp-status" class="form-control" required>
+                <option value="hadir">Hadir</option>
+                <option value="tidak-hadir">Mohon Maaf, Tidak Bisa Hadir</option>
+                <option value="ragu">Masih Ragu / Belum Pasti</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-text">Doa &amp; Ucapan Restu</label>
+              <textarea id="rsvp-text" class="form-control" placeholder="Tuliskan doa serta ucapan selamat untuk kedua mempelai..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-royal" style="width: 100%; margin-top: 0.5rem;">
+              <i class="fas fa-paper-plane"></i> Kirim Konfirmasi &amp; Doa
+            </button>
+          </form>
+        </div>
+
+        <!-- Wishes List (Buku Tamu) -->
+        <div class="ornate-card wishes-card">
+          <img src="assets/corner-ornament.svg" class="corner-top-left" alt="Corner">
+          <img src="assets/corner-ornament.svg" class="corner-top-right" alt="Corner">
+
+          <div class="wishes-header">
+            <h3 style="font-family: var(--font-royal); color: #fff; font-size: 1.3rem;">Untaian Doa</h3>
+            <span id="wishes-count-badge" class="wishes-counter">4 Doa &amp; Ucapan</span>
+          </div>
+
+          <div id="wishes-list-container" class="wishes-list">
+            <!-- Wishes will be populated dynamically via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER / PROTOKOL & PENUTUP -->
+    <footer class="footer-section">
+      <img src="assets/gunungan.svg" alt="Gunungan" class="footer-gunungan">
+      <h3 class="footer-couple-names">A. Fahmi Aziz &amp; Rofiatul Hasanah</h3>
+      <p class="footer-closing">
+        <em>"Matur nuwun sanget awit saking sih wilasa, panyengkuyung, sarta donga pangestu panjenengan sami. Mugi Gusti Ingkang Maha Agung tansah paring berkah lan rahayu kagem kita sedaya."</em>
+      </p>
+      <img src="assets/divider.svg" alt="Divider" class="divider-ornament" style="max-width: 260px; margin: 1rem auto;">
+      <p class="footer-credit">
+        Pawiwahan Ageng &copy; 2026 Fahmi &amp; Rofiatul Wedding Invitation
+      </p>
+    </footer>
+
+  </div><!-- /main-wrapper -->
+
+  <!-- ==========================================================================
+       BOTTOM NAVIGATION BAR (FLOATING)
+       ========================================================================== -->
+  <nav class="bottom-nav">
+    <a href="#greeting-section" class="nav-item active" title="Beranda">
+      <i class="fas fa-home"></i>
+      <span>Beranda</span>
+    </a>
+    <a href="#mempelai-section" class="nav-item" title="Mempelai">
+      <i class="fas fa-heart"></i>
+      <span>Mempelai</span>
+    </a>
+    <a href="#acara-section" class="nav-item" title="Acara">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Acara</span>
+    </a>
+    <a href="#cerita-section" class="nav-item" title="Cerita">
+      <i class="fas fa-hourglass-half"></i>
+      <span>Cerita</span>
+    </a>
+    <a href="#galeri-section" class="nav-item" title="Galeri">
+      <i class="fas fa-images"></i>
+      <span>Galeri</span>
+    </a>
+    <a href="#kado-section" class="nav-item" title="Hadiah">
+      <i class="fas fa-gift"></i>
+      <span>Hadiah</span>
+    </a>
+    <a href="#ucapan-section" class="nav-item" title="Ucapan">
+      <i class="fas fa-comments"></i>
+      <span>Ucapan</span>
+    </a>
+  </nav>
+
+  <!-- ==========================================================================
+       MODAL: EDIT NAMA PENERIMA & GENERATOR LINK WHATSAPP
+       ========================================================================== -->
+  <div id="recipient-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeRecipientModal()" title="Tutup">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <h3 class="modal-title">Edit Nama Penerima Undangan</h3>
+      <p class="modal-desc">
+        Kustomisasi nama tamu yang tertera pada undangan dan buat tautan khusus serta pesan undangan WhatsApp secara instan.
+      </p>
+
+      <div class="form-group">
+        <label for="modal-input-name">Nama Tamu / Penerima:</label>
+        <input type="text" id="modal-input-name" class="form-control" placeholder="Contoh: Bpk. Bambang Sutrisno" oninput="updateModalPreview()">
+        
+        <!-- Quick Prefix Chips -->
+        <div class="quick-name-chips">
+          <span class="name-chip" onclick="addNamePrefix('Bpk.')">+ Bpk.</span>
+          <span class="name-chip" onclick="addNamePrefix('Ibu')">+ Ibu</span>
+          <span class="name-chip" onclick="addNamePrefix('Mas')">+ Mas</span>
+          <span class="name-chip" onclick="addNamePrefix('Mbak')">+ Mbak</span>
+          <span class="name-chip" onclick="addNamePrefix('& Keluarga')">+ &amp; Keluarga</span>
+          <span class="name-chip" onclick="addNamePrefix('& Partner')">+ &amp; Partner</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-input-loc">Sebutan / Lokasi:</label>
+        <input type="text" id="modal-input-loc" class="form-control" placeholder="Contoh: di Tempat atau di Yogyakarta" value="di Tempat" oninput="updateModalPreview()">
+      </div>
+
+      <!-- Preview Tampilan -->
+      <div class="modal-preview-box">
+        <span class="modal-preview-label">Tampilan pada Sampul Undangan:</span>
+        <div id="modal-preview-name" class="modal-preview-name">Tamu Undangan</div>
+        <div id="modal-preview-loc" style="font-size: 0.85rem; color: var(--text-dim);">di Tempat</div>
+      </div>
+
+      <div class="share-action-buttons">
+        <button class="btn-royal" onclick="applyRecipientFromModal()">
+          <i class="fas fa-check"></i> Terapkan Langsung ke Halaman Ini
+        </button>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+          <button class="btn-outline-royal" onclick="copyInvitationLink()">
+            <i class="fas fa-link"></i> Salin Link
+          </button>
+          <button class="btn-outline-royal" onclick="copyWhatsAppMessage()">
+            <i class="fas fa-copy"></i> Salin Teks WA
+          </button>
+        </div>
+
+        <button class="btn-outline-royal" style="border-color: #25d366; color: #25d366;" onclick="shareViaWhatsApp()">
+          <i class="fab fa-whatsapp"></i> Bagikan Langsung ke WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       LIGHTBOX MODAL FOR GALLERY
+       ========================================================================== -->
+  <div id="gallery-lightbox" onclick="closeLightbox()">
+    <div class="lightbox-img-wrapper" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">
+        <i class="fas fa-times"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="Enlarged photo">
+    </div>
+  </div>
+
+  <!-- App Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

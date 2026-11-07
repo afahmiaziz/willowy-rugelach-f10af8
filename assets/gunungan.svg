@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 800" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae19c" />
+      <stop offset="25%" stop-color="#dfba54" />
+      <stop offset="50%" stop-color="#b8860b" />
+      <stop offset="75%" stop-color="#e8c86d" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffe699" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#b8860b" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Gunungan Outer Silhouette -->
+  <path d="M250 30 
+           C285 100 370 200 420 340 
+           C460 450 480 560 460 670 
+           C450 715 410 740 370 740 
+           L130 740 
+           C90 740 50 715 40 670 
+           C20 560 40 450 80 340 
+           C130 200 215 100 250 30 Z" 
+        stroke="url(#goldGrad)" stroke-width="4" fill="none" filter="url(#glow)" />
+
+  <!-- Inner Border Line -->
+  <path d="M250 55 
+           C280 120 355 210 400 345 
+           C440 450 455 550 440 655 
+           C430 690 400 715 365 715 
+           L135 715 
+           C100 715 70 690 60 655 
+           C45 550 60 450 100 345 
+           C145 210 220 120 250 55 Z" 
+        stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="6,4" fill="none" opacity="0.8" />
+
+  <!-- Base Pedestal (Batu Gilang) -->
+  <path d="M110 740 L390 740 L370 770 L130 770 Z" fill="url(#goldGrad)" opacity="0.7"/>
+  <path d="M140 770 L360 770 L340 790 L160 790 Z" fill="url(#goldGrad)" opacity="0.5"/>
+
+  <!-- Pintu Gerbang Makara (Sacred Gateway) -->
+  <path d="M190 720 L190 580 C190 530 310 530 310 580 L310 720 Z" stroke="url(#goldGrad)" stroke-width="3" fill="#13100e" />
+  <path d="M250 540 L250 720" stroke="url(#goldGrad)" stroke-width="2" />
+  <circle cx="230" cy="640" r="4" fill="url(#goldGrad)" />
+  <circle cx="270" cy="640" r="4" fill="url(#goldGrad)" />
+  <!-- Gate Roof -->
+  <path d="M170 585 C210 550 250 515 250 515 C250 515 290 550 330 585 Z" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" />
+
+  <!-- Sacred Tree of Life (Pohon Hayat) Trunk & Branches -->
+  <path d="M250 515 L250 110" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Symmetric Branches & Foliage -->
+  <!-- Level 1 (Top) -->
+  <path d="M250 160 C270 140 300 135 320 150 C310 170 280 180 250 180" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+  <path d="M250 160 C230 140 200 135 180 150 C190 170 220 180 250 180" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+  
+  <!-- Level 2 -->
+  <path d="M250 220 C290 190 340 190 360 220 C340 245 290 245 250 245" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+  <path d="M250 220 C210 190 160 190 140 220 C160 245 210 245 250 245" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+
+  <!-- Level 3 -->
+  <path d="M250 290 C310 250 380 255 400 300 C370 330 310 320 250 320" stroke="url(#goldGrad)" stroke-width="2.2" fill="none" />
+  <path d="M250 290 C190 250 120 255 100 300 C130 330 190 320 250 320" stroke="url(#goldGrad)" stroke-width="2.2" fill="none" />
+
+  <!-- Level 4 -->
+  <path d="M250 370 C330 330 400 350 430 400 C390 430 320 410 250 410" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+  <path d="M250 370 C170 330 100 350 70 400 C110 430 180 410 250 410" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+
+  <!-- Level 5 (Lower Canopy) -->
+  <path d="M250 450 C340 420 410 440 435 500 C390 520 320 490 250 490" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+  <path d="M250 450 C160 420 90 440 65 500 C110 520 180 490 250 490" stroke="url(#goldGrad)" stroke-width="2" fill="none" />
+
+  <!-- Floral and Spiral Elements (Lung-lungan) -->
+  <circle cx="250" cy="110" r="14" fill="url(#goldGrad)" />
+  <circle cx="250" cy="110" r="7" fill="#13100e" />
+
+  <!-- Mythical Wings / Garuda stylization -->
+  <path d="M250 340 C280 320 320 330 340 370 C310 375 280 365 250 355" fill="url(#goldGlow)" />
+  <path d="M250 340 C220 320 180 330 160 370 C190 375 220 365 250 355" fill="url(#goldGlow)" />
+
+  <!-- Decorative Keraton Stars & Jewels -->
+  <polygon points="250,60 254,75 270,75 257,85 262,100 250,90 238,100 243,85 230,75 246,75" fill="url(#goldGrad)" />
+  <circle cx="250" cy="220" r="5" fill="url(#goldGrad)" />
+  <circle cx="250" cy="290" r="6" fill="url(#goldGrad)" />
+  <circle cx="250" cy="370" r="7" fill="url(#goldGrad)" />
+  <circle cx="250" cy="450" r="8" fill="url(#goldGrad)" />
+</svg>

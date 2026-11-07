@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="goldCornerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae19c" />
+      <stop offset="50%" stop-color="#dfba54" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+  </defs>
+  <!-- Outer Corner border -->
+  <path d="M5 190 L5 25 C5 14 14 5 25 5 L190 5" stroke="url(#goldCornerGrad)" stroke-width="2.5" fill="none" />
+  <path d="M15 170 L15 30 C15 22 22 15 30 15 L170 15" stroke="url(#goldCornerGrad)" stroke-width="1.2" stroke-dasharray="4,3" fill="none" opacity="0.8" />
+  
+  <!-- Javanese Ukiran (Floral Swirls) -->
+  <path d="M8 8 C30 30 40 70 25 100 C15 80 25 40 50 25 C75 10 100 25 110 35" stroke="url(#goldCornerGrad)" stroke-width="1.8" fill="none" />
+  <path d="M8 8 C30 30 70 40 100 25 C80 15 40 25 25 50 C10 75 25 100 35 110" stroke="url(#goldCornerGrad)" stroke-width="1.8" fill="none" />
+  
+  <!-- Leaf and bud flourishes -->
+  <circle cx="28" cy="28" r="4.5" fill="url(#goldCornerGrad)" />
+  <circle cx="8" cy="8" r="5" fill="url(#goldCornerGrad)" />
+  <path d="M35 15 C45 25 60 25 70 15" stroke="url(#goldCornerGrad)" stroke-width="1.5" fill="none" />
+  <path d="M15 35 C25 45 25 60 15 70" stroke="url(#goldCornerGrad)" stroke-width="1.5" fill="none" />
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 60" fill="none">
+  <defs>
+    <linearGradient id="goldDivGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fae19c" stop-opacity="0" />
+      <stop offset="30%" stop-color="#dfba54" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#fae19c" stop-opacity="1" />
+      <stop offset="70%" stop-color="#dfba54" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#fae19c" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <!-- Center Mandala / Lotus Motif -->
+  <line x1="30" y1="30" x2="250" y2="30" stroke="url(#goldDivGrad)" stroke-width="1.5" />
+  <line x1="350" y1="30" x2="570" y2="30" stroke="url(#goldDivGrad)" stroke-width="1.5" />
+  
+  <circle cx="270" cy="30" r="3" fill="#dfba54" />
+  <circle cx="330" cy="30" r="3" fill="#dfba54" />
+  
+  <!-- Central Diamond & Flower -->
+  <polygon points="300,12 315,30 300,48 285,30" fill="url(#goldDivGrad)" opacity="0.9" />
+  <circle cx="300" cy="30" r="5" fill="#181310" stroke="#dfba54" stroke-width="1.5" />
+  
+  <!-- Swirl accents -->
+  <path d="M250 30 C240 20 220 22 225 35 C230 45 250 35 260 30" stroke="#dfba54" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <path d="M350 30 C360 20 380 22 375 35 C370 45 350 35 340 30" stroke="#dfba54" stroke-width="1.2" fill="none" opacity="0.7"/>
+</svg>

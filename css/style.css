@@ -1,0 +1,1613 @@
+/* ==========================================================================
+   PAWIWAHAN AGENG - JAVANESE ROYAL WEDDING THEME
+   Mempelai: A. Fahmi Aziz & Rofiatul Hasanah
+   Aesthetic: Dark, Romantic, Majestic, Royal Keraton Javanese with Gold
+   ========================================================================== */
+
+:root {
+  --bg-dark: #0a0807;
+  --bg-dark-secondary: #130f0c;
+  --bg-card: rgba(26, 20, 16, 0.88);
+  --bg-card-hover: rgba(35, 27, 21, 0.95);
+  
+  --gold-primary: #dfba54;
+  --gold-light: #fae19c;
+  --gold-dark: #8a6508;
+  --gold-gradient: linear-gradient(135deg, #fae19c 0%, #dfba54 50%, #8a6508 100%);
+  --gold-gradient-soft: linear-gradient(135deg, rgba(250, 225, 156, 0.15) 0%, rgba(223, 186, 84, 0.05) 100%);
+  --gold-border: rgba(223, 186, 84, 0.35);
+  --gold-glow: 0 0 25px rgba(223, 186, 84, 0.25);
+  
+  --text-main: #f5eedb;
+  --text-muted: #b8a892;
+  --text-dim: #8c7d6c;
+  
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  --shadow-majestic: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(223, 186, 84, 0.1);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(138, 101, 8, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 80%, rgba(223, 186, 84, 0.04) 0%, transparent 50%),
+    url('../assets/batik-pattern.svg');
+  background-repeat: repeat;
+  background-size: 70px 70px;
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Golden Particles Canvas */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Typography Helpers */
+.font-royal { font-family: var(--font-royal); letter-spacing: 0.05em; }
+.font-serif { font-family: var(--font-serif); }
+.font-script { font-family: var(--font-script); }
+
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gold-glow {
+  text-shadow: 0 0 20px rgba(223, 186, 84, 0.4);
+}
+
+/* Royal Ornaments */
+.divider-ornament {
+  width: 100%;
+  max-width: 380px;
+  height: 38px;
+  margin: 1.5rem auto;
+  display: block;
+  filter: drop-shadow(0 2px 5px rgba(223, 186, 84, 0.2));
+}
+
+.ornate-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-majestic);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: var(--transition-smooth);
+}
+
+.ornate-card:hover {
+  border-color: rgba(223, 186, 84, 0.6);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(223, 186, 84, 0.18);
+  transform: translateY(-3px);
+}
+
+.corner-top-left, .corner-top-right, .corner-bottom-left, .corner-bottom-right {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.corner-top-left { top: 6px; left: 6px; }
+.corner-top-right { top: 6px; right: 6px; transform: scaleX(-1); }
+.corner-bottom-left { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.corner-bottom-right { bottom: 6px; right: 6px; transform: scale(-1); }
+
+/* Buttons */
+.btn-royal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: var(--gold-gradient);
+  color: #1a1208;
+  font-family: var(--font-royal);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid #fae19c;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(223, 186, 84, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.btn-royal:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(223, 186, 84, 0.55);
+  background: linear-gradient(135deg, #fff0bf 0%, #e8c86d 50%, #a67c13 100%);
+  color: #0d0803;
+}
+
+.btn-outline-royal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(223, 186, 84, 0.06);
+  color: var(--gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.75rem 1.6rem;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-royal:hover {
+  background: rgba(223, 186, 84, 0.16);
+  border-color: var(--gold-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   COVER / HERO OVERLAY (LOCKED GATE)
+   ========================================================================== */
+#invitation-cover {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(45, 30, 18, 0.85) 0%, rgba(10, 8, 7, 0.98) 85%),
+    url('../assets/batik-pattern.svg');
+  background-size: auto, 60px 60px;
+  overflow: hidden;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease-in-out;
+}
+
+#invitation-cover.opened {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cover-container {
+  width: 90%;
+  max-width: 540px;
+  text-align: center;
+  padding: 2.5rem 1.8rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+.cover-gunungan {
+  width: 140px;
+  height: auto;
+  margin: 0 auto 1.2rem;
+  filter: drop-shadow(0 0 20px rgba(223, 186, 84, 0.45));
+  animation: pulseGunungan 4s ease-in-out infinite alternate;
+}
+
+.cover-subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.cover-title {
+  font-family: var(--font-royal);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 0.8rem;
+}
+
+.cover-names {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.03em;
+}
+
+.cover-names span {
+  font-family: var(--font-script);
+  font-size: 2.8rem;
+  color: var(--gold-light);
+  margin: 0 0.4rem;
+  vertical-align: middle;
+}
+
+/* Recipient Box on Cover */
+.cover-recipient-card {
+  background: rgba(20, 15, 12, 0.85);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 1.3rem 1.5rem;
+  margin: 1.6rem auto 1.8rem;
+  max-width: 440px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+.cover-recipient-card::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed rgba(223, 186, 84, 0.25);
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.recipient-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.recipient-name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1.3;
+}
+
+.recipient-location {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.2rem;
+}
+
+.btn-open-envelope {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-open-envelope::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(25deg);
+  animation: shineWave 4s infinite ease-in-out;
+}
+
+/* Floating Edit Guest Pill */
+.edit-guest-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  background: rgba(223, 186, 84, 0.12);
+  border: 1px solid rgba(223, 186, 84, 0.3);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.edit-guest-pill:hover {
+  background: rgba(223, 186, 84, 0.25);
+  border-color: var(--gold-primary);
+  color: #fff;
+}
+
+/* ==========================================================================
+   MAIN CONTENT WRAPPER
+   ========================================================================== */
+.main-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem 6rem;
+  position: relative;
+  z-index: 5;
+}
+
+section {
+  padding: 5rem 0 3.5rem;
+  text-align: center;
+}
+
+.section-tagline {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-royal);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.section-desc {
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+/* ==========================================================================
+   HERO / GREETING SECTION
+   ========================================================================== */
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 3rem;
+}
+
+.hero-gunungan {
+  width: 170px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 25px rgba(223, 186, 84, 0.5));
+}
+
+.hero-couple-names {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 1rem 0;
+  letter-spacing: 0.04em;
+}
+
+.hero-couple-names .ampersand {
+  font-family: var(--font-script);
+  font-size: 3.8rem;
+  color: var(--gold-light);
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+
+.wedding-date-badge {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  font-family: var(--font-royal);
+  font-size: 1.05rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+  margin-top: 1.2rem;
+}
+
+/* ==========================================================================
+   AYAT & FILOSOFI JAWA (QUOTE)
+   ========================================================================== */
+.quote-card {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.arabic-text {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.6rem;
+  line-height: 2.2;
+  color: var(--gold-light);
+  direction: rtl;
+  margin-bottom: 1.4rem;
+}
+
+.quote-translation {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.quote-reference {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold-primary);
+}
+
+.javanese-philosophy {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(223, 186, 84, 0.25);
+}
+
+.javanese-hanacaraka {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.javanese-meaning {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   MEMPELAI (BRIDE & GROOM PROFILES)
+   ========================================================================== */
+.mempelai-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.mempelai-card {
+  text-align: center;
+}
+
+.photo-frame-outer {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  margin: 0 auto 1.6rem;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 120px 120px 20px 20px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(223, 186, 84, 0.25);
+  background-color: #1a1410;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: contrast(1.05) brightness(0.95);
+}
+
+.photo-frame-outer:hover .photo-frame img {
+  transform: scale(1.06);
+}
+
+.photo-frame-filigree {
+  position: absolute;
+  inset: -8px;
+  border: 1px dashed rgba(223, 186, 84, 0.4);
+  border-radius: 128px 128px 26px 26px;
+  pointer-events: none;
+}
+
+.mempelai-name {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  line-height: 1.25;
+}
+
+.mempelai-title {
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 0.8rem;
+}
+
+.mempelai-family {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.mempelai-family strong {
+  color: var(--text-main);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  background: rgba(223, 186, 84, 0.08);
+  border: 1px solid rgba(223, 186, 84, 0.2);
+  transition: var(--transition-smooth);
+}
+
+.social-link:hover {
+  background: rgba(223, 186, 84, 0.22);
+  border-color: var(--gold-primary);
+  color: #fff;
+}
+
+.mempelai-divider-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-ampersand {
+  font-family: var(--font-script);
+  font-size: 4rem;
+  color: var(--gold-light);
+  filter: drop-shadow(0 0 15px rgba(223, 186, 84, 0.5));
+}
+
+/* ==========================================================================
+   COUNTDOWN TIMER
+   ========================================================================== */
+.countdown-container {
+  margin: 2.5rem auto 3.5rem;
+  max-width: 650px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.countdown-box {
+  background: rgba(26, 20, 16, 0.9);
+  border: 1px solid var(--gold-border);
+  border-radius: 14px;
+  padding: 1.2rem 0.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold-gradient);
+}
+
+.countdown-num {
+  font-family: var(--font-royal);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.countdown-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   ACARA / EVENT DETAILS
+   ========================================================================== */
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  padding: 2.5rem 1.8rem;
+  text-align: center;
+}
+
+.event-icon-badge {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 1.4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 186, 84, 0.25) 0%, rgba(26, 20, 16, 0.9) 70%);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(223, 186, 84, 0.25);
+}
+
+.event-title {
+  font-family: var(--font-royal);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.8rem;
+}
+
+.event-date-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.event-time-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(223, 186, 84, 0.12);
+  border-radius: 20px;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  margin-bottom: 1.4rem;
+}
+
+.event-location-title {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+}
+
+.event-location-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+}
+
+.venue-map-container {
+  margin-top: 3rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  box-shadow: var(--shadow-majestic);
+}
+
+.venue-map-container iframe {
+  width: 100%;
+  height: 340px;
+  display: block;
+  border: 0;
+  filter: invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.9);
+}
+
+/* ==========================================================================
+   KISAH CINTA (LOVE STORY TIMELINE)
+   ========================================================================== */
+.timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 3rem auto 1rem;
+  padding: 1rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    var(--gold-primary) 15%, 
+    var(--gold-primary) 85%, 
+    transparent 100%);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  width: 50%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 15px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  border: 3px solid #130f0c;
+  box-shadow: 0 0 12px var(--gold-primary);
+}
+
+.timeline-item.left .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -8px;
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-smooth);
+}
+
+.timeline-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+}
+
+.timeline-year {
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   GALERI FOTO & LIGHTBOX
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  background: #181310;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 8, 7, 0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-overlay span {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Lightbox Modal */
+#gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 5, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#gallery-lightbox.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox-img-wrapper {
+  max-width: 90vw;
+  max-height: 85vh;
+  position: relative;
+}
+
+.lightbox-img-wrapper img {
+  max-width: 100%;
+  max-height: 82vh;
+  border-radius: 12px;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 0 35px rgba(223, 186, 84, 0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  color: #fff;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* ==========================================================================
+   AMPLOP DIGITAL & WEDDING GIFT
+   ========================================================================== */
+.gift-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.gift-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.bank-card {
+  background: linear-gradient(145deg, rgba(32, 24, 18, 0.95) 0%, rgba(18, 14, 11, 0.98) 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: 18px;
+  padding: 2rem 1.6rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-majestic);
+}
+
+.bank-card::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(223, 186, 84, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bank-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.bank-logo {
+  font-family: var(--font-royal);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+
+.bank-chip {
+  width: 40px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #dfba54 0%, #fae19c 50%, #8a6508 100%);
+  opacity: 0.85;
+}
+
+.bank-acc-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+
+.bank-acc-number {
+  font-family: 'Courier New', monospace, monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+.bank-acc-name {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 1.4rem;
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(223, 186, 84, 0.14);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  border-radius: 30px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-copy:hover {
+  background: var(--gold-primary);
+  color: #120e0a;
+}
+
+.gift-address-card {
+  margin-top: 1.8rem;
+  padding: 1.8rem;
+  background: var(--bg-card);
+  border: 1px dashed var(--gold-border);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.gift-address-card h4 {
+  font-family: var(--font-royal);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.gift-address-card p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   RSVP & UCAPAN / BUKU TAMU
+   ========================================================================== */
+.rsvp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.rsvp-form-card {
+  padding: 2.2rem 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: rgba(14, 11, 9, 0.9);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  transition: var(--transition-smooth);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(223, 186, 84, 0.35);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Wishes List (Guest Book) */
+.wishes-card {
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.wishes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(223, 186, 84, 0.2);
+}
+
+.wishes-counter {
+  font-size: 0.82rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(223, 186, 84, 0.15);
+  border-radius: 20px;
+  color: var(--gold-light);
+}
+
+.wishes-list {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.wishes-list::-webkit-scrollbar {
+  width: 5px;
+}
+.wishes-list::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 10px;
+}
+
+.wish-item {
+  background: rgba(16, 12, 10, 0.85);
+  border: 1px solid rgba(223, 186, 84, 0.15);
+  border-radius: 12px;
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.wish-item:hover {
+  border-color: rgba(223, 186, 84, 0.35);
+  background: rgba(22, 17, 14, 0.95);
+}
+
+.wish-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.wish-name {
+  font-weight: 700;
+  color: var(--gold-light);
+  font-size: 0.95rem;
+}
+
+.wish-status {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.status-hadir {
+  background: rgba(72, 187, 120, 0.2);
+  color: #68d391;
+  border: 1px solid rgba(72, 187, 120, 0.4);
+}
+
+.status-tidak-hadir {
+  background: rgba(245, 101, 101, 0.2);
+  color: #fc8181;
+  border: 1px solid rgba(245, 101, 101, 0.4);
+}
+
+.status-ragu {
+  background: rgba(236, 201, 75, 0.2);
+  color: #f6e05e;
+  border: 1px solid rgba(236, 201, 75, 0.4);
+}
+
+.wish-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
+}
+
+.wish-time {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   FOOTER SECTION
+   ========================================================================== */
+.footer-section {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  border-top: 1px solid rgba(223, 186, 84, 0.2);
+  margin-top: 4rem;
+}
+
+.footer-gunungan {
+  width: 90px;
+  height: auto;
+  margin-bottom: 1.2rem;
+  opacity: 0.85;
+}
+
+.footer-couple-names {
+  font-family: var(--font-royal);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.footer-closing {
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-credit {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS & BOTTOM NAVBAR
+   ========================================================================== */
+/* Music Player Floating Button */
+.audio-controller-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(20, 15, 12, 0.92);
+  border: 2px solid var(--gold-primary);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(223, 186, 84, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.audio-controller-btn.playing {
+  animation: spinGamelan 8s linear infinite;
+  box-shadow: 0 0 25px rgba(223, 186, 84, 0.6);
+}
+
+/* Share / Edit Guest Floating Button */
+.floating-share-btn {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: rgba(20, 15, 12, 0.92);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  z-index: 900;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+  transition: var(--transition-smooth);
+}
+
+.floating-share-btn:hover {
+  background: var(--gold-primary);
+  color: #120e0a;
+  transform: translateY(-2px);
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22, 17, 14, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gold-border);
+  border-radius: 40px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 90;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 186, 84, 0.2);
+}
+
+.nav-item {
+  color: var(--text-dim);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.68rem;
+  gap: 0.2rem;
+  transition: var(--transition-smooth);
+  padding: 0.3rem 0.5rem;
+  border-radius: 12px;
+}
+
+.nav-item i {
+  font-size: 1.05rem;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RECIPIENT EDITOR & SHARE MODAL
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 5, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-backdrop.active {
+  display: flex;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-primary);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  padding: 2.2rem 2rem;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(223, 186, 84, 0.3);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: #fff;
+}
+
+.modal-title {
+  font-family: var(--font-royal);
+  font-size: 1.45rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.modal-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+
+.quick-name-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.name-chip {
+  font-size: 0.75rem;
+  background: rgba(223, 186, 84, 0.1);
+  color: var(--gold-light);
+  border: 1px solid rgba(223, 186, 84, 0.25);
+  padding: 0.25rem 0.7rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.name-chip:hover {
+  background: rgba(223, 186, 84, 0.25);
+  border-color: var(--gold-primary);
+}
+
+.modal-preview-box {
+  background: rgba(14, 11, 9, 0.8);
+  border: 1px dashed var(--gold-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+.modal-preview-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.modal-preview-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.share-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+/* Toast Notifications */
+.toast-notice {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: #18130f;
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8), 0 0 15px rgba(223, 186, 84, 0.4);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGunungan {
+  0% { transform: scale(1); filter: drop-shadow(0 0 18px rgba(223, 186, 84, 0.35)); }
+  100% { transform: scale(1.04); filter: drop-shadow(0 0 32px rgba(223, 186, 84, 0.65)); }
+}
+
+@keyframes spinGamelan {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shineWave {
+  0% { left: -60%; }
+  35% { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE ADAPTATION)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-couple-names {
+    font-size: 2.3rem;
+  }
+  .hero-couple-names .ampersand {
+    font-size: 2.8rem;
+  }
+  .cover-names {
+    font-size: 1.85rem;
+  }
+  .cover-names span {
+    font-size: 2.2rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .mempelai-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .mempelai-divider-center {
+    display: none;
+  }
+  
+  .event-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gift-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .rsvp-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .countdown-num {
+    font-size: 1.8rem;
+  }
+  
+  /* Timeline responsive */
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+  .timeline-item.right {
+    left: 0;
+  }
+  .timeline-item.left .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 12px;
+    right: auto;
+  }
+  
+  .bottom-nav {
+    gap: 0.6rem;
+    padding: 0.4rem 0.8rem;
+    width: 92%;
+    justify-content: space-around;
+  }
+  .nav-item span {
+    display: none;
+  }
+  .nav-item i {
+    font-size: 1.25rem;
+  }
+}

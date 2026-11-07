@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <!-- Subtle Golden-Brown line for Dark Keraton Theme -->
+    <style>
+      .kawung { stroke: #dfba54; stroke-width: 0.65; fill: none; opacity: 0.08; }
+      .core { fill: #dfba54; opacity: 0.12; }
+      .cross { stroke: #dfba54; stroke-width: 0.5; opacity: 0.05; }
+    </style>
+  </defs>
+  <!-- Background is transparent so it overlays cleanly on dark CSS backgrounds -->
+  <!-- Kawung 4-lobed pattern -->
+  <!-- Circle centers at (0,0), (80,0), (0,80), (80,80), and (40,40) -->
+  
+  <!-- Center Kawung -->
+  <ellipse cx="40" cy="20" rx="8" ry="18" class="kawung" />
+  <ellipse cx="40" cy="60" rx="8" ry="18" class="kawung" />
+  <ellipse cx="20" cy="40" rx="18" ry="8" class="kawung" />
+  <ellipse cx="60" cy="40" rx="18" ry="8" class="kawung" />
+  
+  <circle cx="40" cy="40" r="3" class="core" />
+  <polygon points="40,36 43,40 40,44 37,40" fill="#dfba54" opacity="0.1" />
+
+  <!-- Corner Kawung elements -->
+  <ellipse cx="0" cy="20" rx="8" ry="18" class="kawung" />
+  <ellipse cx="0" cy="60" rx="8" ry="18" class="kawung" />
+  <ellipse cx="80" cy="20" rx="8" ry="18" class="kawung" />
+  <ellipse cx="80" cy="60" rx="8" ry="18" class="kawung" />
+
+  <ellipse cx="20" cy="0" rx="18" ry="8" class="kawung" />
+  <ellipse cx="60" cy="0" rx="18" ry="8" class="kawung" />
+  <ellipse cx="20" cy="80" rx="18" ry="8" class="kawung" />
+  <ellipse cx="60" cy="80" rx="18" ry="8" class="kawung" />
+
+  <circle cx="0" cy="0" r="3" class="core" />
+  <circle cx="80" cy="0" r="3" class="core" />
+  <circle cx="0" cy="80" r="3" class="core" />
+  <circle cx="80" cy="80" r="3" class="core" />
+</svg>
