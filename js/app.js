@@ -354,8 +354,8 @@ function stopWebAudioGamelan() {
    4. COUNTDOWN TIMER
    ========================================================================== */
 function initCountdown() {
-  // Target: 14 November 2026, 08:00 WIB (UTC+7)
-  const targetDate = new Date('2026-11-14T08:00:00+07:00').getTime();
+  // Target: 16 Januari 2027, 08:00 WIB (UTC+7)
+  const targetDate = new Date('2027-01-16T11:00:00+07:00').getTime();
 
   function updateTimer() {
     const now = new Date().getTime();
