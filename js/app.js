@@ -213,148 +213,61 @@ function openInvitation() {
 /* ==========================================================================
    3. BACKGROUND AUDIO & AMBIENCE (HTML5 + WEB AUDIO SYNTH GAMELAN FALLBACK)
    ========================================================================== */
+/* ==========================================================================
+   3. BACKGROUND AUDIO & AMBIENCE
+   ========================================================================== */
 let isAudioPlaying = false;
 let audioElement = null;
-let webAudioCtx = null;
-let gamelanTimer = null;
 
 function initAudioPlayer() {
-  audioElement = document.getElementById('wedding-audio');
-  const toggleBtn = document.getElementById('audio-toggle-btn');
+    audioElement = document.getElementById('wedding-audio');
+    const toggleBtn = document.getElementById('audio-toggle-btn');
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      if (isAudioPlaying) {
-        pauseAudio();
-      } else {
-        playAudio();
-      }
-    });
-  }
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (isAudioPlaying) {
+                pauseAudio();
+            } else {
+                playAudio();
+            }
+        });
+    }
 }
 
 function playAudio() {
-  const toggleBtn = document.getElementById('audio-toggle-btn');
-  const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+    const toggleBtn = document.getElementById('audio-toggle-btn');
+    const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
 
-  if (audioElement && audioElement.src) {
-    const playPromise = audioElement.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        isAudioPlaying = true;
-        if (toggleBtn) toggleBtn.classList.add('playing');
-        if (icon) icon.className = 'fas fa-compact-disc';
-      }).catch(err => {
-        console.warn('HTML5 audio play blocked or failed, falling back to Web Audio Gamelan:', err);
-        startWebAudioGamelan();
-      });
-      return;
+    if (audioElement) {
+        audioElement.play().then(() => {
+            isAudioPlaying = true;
+            if (toggleBtn) toggleBtn.classList.add('playing');
+            if (icon) icon.className = 'fas fa-compact-disc';
+        }).catch(err => {
+            console.warn('Autoplay diblokir browser atau file audio tidak ditemukan:', err);
+        });
     }
-  }
-
-  // Fallback to soothing synthesized gamelan
-  startWebAudioGamelan();
 }
 
 function pauseAudio() {
-  const toggleBtn = document.getElementById('audio-toggle-btn');
-  const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
-
-  if (audioElement) {
-    audioElement.pause();
-  }
-  stopWebAudioGamelan();
-
-  isAudioPlaying = false;
-  if (toggleBtn) toggleBtn.classList.remove('playing');
-  if (icon) icon.className = 'fas fa-volume-mute';
-}
-
-/**
- * Authentic pentatonic Javanese Pelog / Slendro ambient generator
- * Provides a serene, royal gamelan atmosphere even offline!
- */
-function startWebAudioGamelan() {
-  if (isAudioPlaying) return;
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    if (!webAudioCtx) {
-      webAudioCtx = new AudioContext();
-    }
-    if (webAudioCtx.state === 'suspended') {
-      webAudioCtx.resume();
-    }
-
-    isAudioPlaying = true;
     const toggleBtn = document.getElementById('audio-toggle-btn');
-    if (toggleBtn) toggleBtn.classList.add('playing');
     const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
-    if (icon) icon.className = 'fas fa-compact-disc';
 
-    // Javanese Pelog scale frequencies (Hz): Penunggul, Gulu, Dada, Pelog, Lima, Nem, Barang
-    const pelogScale = [220, 247.5, 275, 330, 366.6, 440, 495, 550, 660];
-    let noteIndex = 0;
+    if (audioElement) {
+        audioElement.pause();
+    }
 
-    const playChime = () => {
-      if (!isAudioPlaying || !webAudioCtx) return;
-
-      const freq = pelogScale[Math.floor(Math.random() * pelogScale.length)];
-      const osc = webAudioCtx.createOscillator();
-      const gain = webAudioCtx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, webAudioCtx.currentTime);
-
-      // Bell-like envelope
-      const now = webAudioCtx.currentTime;
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(0.08, now + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
-
-      osc.connect(gain);
-      gain.connect(webAudioCtx.destination);
-
-      osc.start(now);
-      osc.stop(now + 3.3);
-
-      // Occasional deep gong (Kenong / Kempul)
-      if (Math.random() > 0.6) {
-        const gongOsc = webAudioCtx.createOscillator();
-        const gongGain = webAudioCtx.createGain();
-        gongOsc.type = 'triangle';
-        gongOsc.frequency.setValueAtTime(110, now + 0.2); // Low A
-        gongGain.gain.setValueAtTime(0.001, now + 0.2);
-        gongGain.gain.exponentialRampToValueAtTime(0.12, now + 0.3);
-        gongGain.gain.exponentialRampToValueAtTime(0.0001, now + 4.5);
-        gongOsc.connect(gongGain);
-        gongGain.connect(webAudioCtx.destination);
-        gongOsc.start(now + 0.2);
-        gongOsc.stop(now + 4.6);
-      }
-
-      const nextDelay = 1800 + Math.random() * 2200;
-      gamelanTimer = setTimeout(playChime, nextDelay);
-    };
-
-    playChime();
-  } catch (e) {
-    console.error('Web Audio error:', e);
-  }
+    isAudioPlaying = false;
+    if (toggleBtn) toggleBtn.classList.remove('playing');
+    if (icon) icon.className = 'fas fa-volume-mute';
 }
 
-function stopWebAudioGamelan() {
-  if (gamelanTimer) {
-    clearTimeout(gamelanTimer);
-    gamelanTimer = null;
-  }
-}
 
 /* ==========================================================================
    4. COUNTDOWN TIMER
    ========================================================================== */
 function initCountdown() {
-  // Target: 16 Januari 2027, 08:00 WIB (UTC+7)
+  // Target: 14 November 2026, 08:00 WIB (UTC+7)
   const targetDate = new Date('2027-01-16T11:00:00+07:00').getTime();
 
   function updateTimer() {
